@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flourich — Produk Pilihan untuk Setiap Momen</title>
+<meta name="description" content="Temukan pilihan produk Flourich. Lihat produk, ukuran, harga, dan cara pemesanan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#059669;
+  --green-dark:#047857;
+  --green-light:#ecfdf5;
+  --orange:#f43f5e;
+  --navy:#0f172a;
+  --text:#334155;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --bg:#f8fafc;
+  --white:#fff;
+  --shadow:0 12px 35px rgba(15,23,42,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--navy);background:#fff;line-height:1.6
+}
+a{text-decoration:none;color:inherit}
+button,input,textarea{font:inherit}
+.container{width:min(1080px,calc(100% - 36px));margin:auto}
+
+/* NAVBAR */
+.navbar{
+  position:sticky;top:0;z-index:100;height:72px;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)
+}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;font-weight:950;letter-spacing:-.5px}
+.logo{
+  width:132px;height:50px;object-fit:contain;mix-blend-mode:multiply
+}
+.footer .logo{width:132px;height:50px;background:#fff;border-radius:5px;padding:2px;mix-blend-mode:normal}
+.nav-links{display:flex;align-items:center;gap:34px;color:#627189;font-size:14px;font-weight:750}
+.nav-links a{transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--green)}
+.nav-cta{
+  border:1px solid #dce5ec;border-radius:11px;padding:10px 17px;
+  font-size:13px;font-weight:850
+}
+.menu{display:none;border:0;background:none;font-size:25px;color:var(--navy)}
+
+/* HERO */
+.hero{
+  min-height:600px;display:flex;align-items:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 5% 25%,rgba(24,196,142,.13),transparent 29%),
+    radial-gradient(circle at 94% 35%,rgba(244,91,61,.08),transparent 25%),
+    linear-gradient(180deg,#fff,#f8fbfc)
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border:1px solid rgba(7,150,105,.10);border-radius:50%
+}
+.hero:before{width:420px;height:420px;right:-190px;top:75px}
+.hero:after{width:270px;height:270px;left:-170px;bottom:-150px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:65px;align-items:center;position:relative;z-index:1}
+.badge{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+  background:#ecfff7;border:1px solid #c8f3e3;border-radius:999px;
+  color:var(--green);font-size:10px;font-weight:900;text-transform:uppercase
+}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--green)}
+h1{
+  margin-top:18px;font-size:clamp(45px,5.5vw,68px);
+  line-height:.99;letter-spacing:-3.5px
+}
+h1 span{color:#079f72}
+.hero p{max-width:570px;color:#68788f;font-size:16px;margin-top:22px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:13px 20px;border-radius:11px;border:0;font-size:13px;font-weight:900;
+  transition:.2s
+}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 9px 20px rgba(7,150,105,.20)}
+.btn-primary:hover{background:#067c5d;transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--green);border:1px solid #dfe8ed}
+.hero-notes{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;color:#7c8a9e;font-size:11px;font-weight:700}
+.hero-notes span{display:flex;gap:5px;align-items:center}
+
+/* PRODUCT HERO VISUAL */
+.product-showcase{
+  position:relative;height:390px;display:flex;align-items:center;justify-content:center
+}
+.product-blob{
+  width:335px;height:335px;border-radius:50%;
+  background:linear-gradient(145deg,#e8faf3,#f8fdfb);
+  border:1px solid #d9eee6;position:absolute
+}
+.big-bottle{
+  width:250px;height:250px;border-radius:50%;overflow:hidden;display:flex;
+  align-items:center;justify-content:center;position:relative;z-index:2;
+  background:#fff;filter:drop-shadow(0 25px 25px rgba(15,23,42,.16))
+}
+.big-bottle img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.floating-card{
+  position:absolute;z-index:4;background:#fff;border:1px solid #e2e9ee;
+  border-radius:15px;padding:13px 15px;box-shadow:var(--shadow)
+}
+.floating-card small{display:block;color:#8795a7;font-size:9px;font-weight:750}
+.floating-card strong{display:block;color:var(--green);font-size:15px;margin-top:2px}
+.card-one{top:52px;left:12px}
+.card-two{right:8px;bottom:62px}
+.card-two strong{color:var(--orange)}
+
+/* GENERAL */
+section{padding:88px 0}
+.section-head{text-align:center;max-width:690px;margin:0 auto 42px}
+.tag{color:var(--green);font-size:10px;font-weight:950;text-transform:uppercase;letter-spacing:.7px}
+.section-head h2{font-size:39px;line-height:1.08;letter-spacing:-2px;margin:8px 0 12px}
+.section-head p{color:var(--muted);font-size:15px}
+
+/* PRODUCTS */
+#produk{background:var(--bg)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.product{
+  background:#fff;border:1px solid #dfe7ed;border-radius:18px;padding:14px;
+  transition:.22s
+}
+.product:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.product-image{
+  height:205px;border-radius:14px;background:#f8fafc;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;overflow:hidden
+}
+.product-image img{width:100%;height:100%;object-fit:contain;padding:10px;background:#fff}
+.bottle{
+  width:57px;height:120px;border-radius:15px 15px 20px 20px;
+  background:linear-gradient(90deg,#ff9a48,#f05b29,#ff873d);
+  box-shadow:inset -7px 0 9px rgba(0,0,0,.10),0 13px 18px rgba(20,40,55,.13);
+  position:relative
+}
+.bottle:before{
+  content:"";position:absolute;width:23px;height:20px;left:17px;top:-13px;
+  border-radius:6px 6px 3px 3px;background:#fff
+}
+.bottle:after{
+  content:"FLOU\\A RICH";white-space:pre;text-align:center;
+  position:absolute;left:7px;right:7px;top:45px;background:#fff;
+  border-radius:5px;padding:7px 0;color:var(--green);font-size:7px;
+  font-weight:950;line-height:9px
+}
+.product-info{padding:14px 3px 3px}
+.product-info h3{font-size:16px}
+.product-info p{font-size:11px;color:#7d8a9d}
+.product-row{display:flex;align-items:center;justify-content:space-between;margin-top:7px}
+.price{color:var(--green);font-size:14px;font-weight:950}
+.stock{padding:4px 8px;border-radius:99px;background:#e3faef;color:#07865f;font-size:9px;font-weight:850}
+
+/* SALES */
+.sales-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.sales-copy h2{font-size:42px;line-height:1.07;letter-spacing:-2.3px}
+.sales-copy p{color:var(--muted);font-size:15px;margin:16px 0 22px}
+.sales-points{display:grid;gap:13px}
+.sales-point{display:flex;gap:11px;align-items:flex-start;color:#56677d;font-size:14px}
+.check{
+  width:23px;height:23px;flex:0 0 23px;border-radius:50%;
+  background:#e6faf2;color:var(--green);display:grid;place-items:center;font-size:12px;font-weight:950
+}
+.sales-card{
+  min-height:365px;border-radius:25px;padding:29px;
+  background:linear-gradient(135deg,#05654f,#079c70);color:#fff;position:relative;overflow:hidden
+}
+.sales-card:before,.sales-card:after{
+  content:"";position:absolute;border:1px solid rgba(255,255,255,.13);border-radius:50%
+}
+.sales-card:before{width:380px;height:380px;right:-170px;top:-180px}
+.sales-card:after{width:240px;height:240px;left:-130px;bottom:-130px}
+.sales-card-content{position:relative;z-index:2}
+.sales-label{font-size:10px;font-weight:900;opacity:.75}
+.sales-card h3{font-size:30px;line-height:1.12;margin-top:7px;max-width:340px;letter-spacing:-1px}
+.sales-items{display:grid;gap:9px;margin-top:24px}
+.sales-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 13px;border-radius:11px;background:rgba(255,255,255,.11);
+  border:1px solid rgba(255,255,255,.10);font-size:11px
+}
+.sales-item b{font-size:13px}
+
+/* ABOUT */
+#tentang{background:#fff}
+.about{text-align:center;max-width:780px;margin:auto}
+.about p{color:var(--muted);font-size:15px;margin-top:14px}
+.about-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}
+.feature{padding:23px;border:1px solid var(--line);border-radius:17px;background:#fff}
+.icon{
+  width:40px;height:40px;border-radius:12px;background:var(--green-light);
+  color:var(--green);display:grid;place-items:center;margin:0 auto 11px;font-weight:950
+}
+.feature h3{font-size:14px;margin-bottom:4px}
+.feature p{font-size:11px;color:var(--muted);margin:0}
+
+/* CONTACT / CTA */
+#kontak{padding-top:30px;padding-bottom:75px;background:#f8fafc}
+.cta{
+  border-radius:25px;padding:47px 45px;background:linear-gradient(120deg,#05654f,#079c70);
+  color:#fff;position:relative;overflow:hidden
+}
+.cta:after{content:"";position:absolute;width:450px;height:450px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-200px;top:-220px}
+.cta-content{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.cta h2{font-size:39px;line-height:1.08;letter-spacing:-2px}
+.cta p{color:rgba(255,255,255,.78);font-size:13px;margin-top:9px;max-width:580px}
+.cta-buttons{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.cta .btn-white{background:#fff;color:#067d5c;border:0}
+.cta .btn-outline-white{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+
+/* FOOTER */
+footer{background:#0c172c;color:#fff;padding:32px 0}
+.footer{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.footer-brand{display:flex;align-items:center;gap:5px;font-weight:900}
+.footer-brand .logo{flex:0 0 auto}
+.footer-copy{color:#8291a7;font-size:10px}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .container{width:min(960px,calc(100% - 48px))}
+  .hero-grid{gap:42px}
+  .nav-links{gap:24px}
+  h1{font-size:clamp(42px,5.2vw,60px)}
+  .sales-grid{gap:35px}
+}
+@media(max-width:850px){
+  .container{width:calc(100% - 36px)}
+  .navbar{height:68px}
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .menu{display:block}
+  .hero{min-height:auto;padding:58px 0 62px}
+  .hero-grid,.sales-grid{grid-template-columns:1fr;gap:40px}
+  .hero-grid>div:first-child{text-align:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .actions,.hero-notes{justify-content:center}
+  .product-showcase{height:340px;max-width:560px;width:100%;margin:auto}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .cta-content{flex-direction:column;align-items:flex-start}
+  .cta-buttons{width:100%}
+}
+@media(max-width:560px){
+  .container{width:calc(100% - 28px)}
+  section{padding:65px 0}
+  .navbar{height:64px}
+  .logo{width:108px;height:44px}
+  h1{font-size:clamp(35px,11vw,46px);letter-spacing:-2.5px}
+  .hero{padding:42px 0 50px}
+  .badge{font-size:9px}
+  .hero p{font-size:14px}
+  .btn{width:100%;padding:12px 16px}
+  .actions{width:100%;gap:9px}
+  .hero-notes{gap:10px 14px;font-size:10px}
+  .section-head h2,.sales-copy h2,.cta h2{font-size:32px}
+  .section-head p{font-size:14px}
+  .product-showcase{height:285px}
+  .product-blob{width:245px;height:245px}
+  .big-bottle{width:220px;height:220px}
+  .floating-card{padding:10px 11px}
+  .floating-card strong{font-size:13px}
+  .card-one{top:30px;left:0}.card-two{right:0;bottom:32px}
+  .products{grid-template-columns:1fr}
+  .about-features{grid-template-columns:1fr}
+  .cta{padding:31px 23px;border-radius:18px}
+  .cta-buttons{flex-direction:column}
+  .footer{flex-direction:column;align-items:flex-start}
+  .footer .logo{width:108px;height:44px}
+  .footer-copy{line-height:1.5}
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="#beranda" class="brand">
+      <img class="logo" src="https://lh3.googleusercontent.com/d/1kbCU9E4sSQTdBylR24DFnRvsX1cAT-vG" alt="Flourich">
+    </a>
+    <nav class="nav-links">
+      <a href="#beranda" class="active">Beranda</a>
+      <a href="#produk">Produk</a>
+      <a href="#tentang">Tentang Kami</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <a href="#kontak" class="nav-cta">Pesan Sekarang</a>
+    <button class="menu" id="menuBtn">☰</button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="beranda">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge"><i></i> Produk pilihan Flourich</div>
+      <h1>Nikmati produk <span>Flourich.</span><br>Teman untuk setiap momen.</h1>
+      <p>Temukan pilihan produk Flourich dengan rasa dan ukuran yang sesuai untuk menemani aktivitas Anda. Pilih produk favorit dan pesan dengan mudah.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#produk">Lihat Produk ↓</a>
+        <a class="btn btn-white" href="#kontak">Pesan Sekarang</a>
+      </div>
+      <div class="hero-notes">
+        <span>✓ Pilihan ukuran</span>
+        <span>✓ Harga terjangkau</span>
+        <span>✓ Mudah dipesan</span>
+      </div>
+    </div>
+
+    <div class="product-showcase">
+      <div class="product-blob"></div>
+      <div class="floating-card card-one">
+        <small>Mulai dari</small>
+        <strong>Rp 10.000</strong>
+      </div>
+      <div class="big-bottle"><img src="https://drive.google.com/thumbnail?id=1hA18Ujn5PYj0YiqUeW1EguqV8iypgZ1_&sz=w800" alt="Semgaci 250 ml"></div>
+      <div class="floating-card card-two">
+        <small>Produk favorit</small>
+        <strong>Semgaci</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="produk">
+  <div class="container">
+    <div class="section-head">
+      <div class="tag">Produk Kami</div>
+      <h2>Pilih produk favoritmu</h2>
+      <p>Berbagai pilihan produk Flourich yang bisa Anda pilih sesuai kebutuhan.</p>
+    </div>
+
+    <div class="products">
+      <article class="product">
+        <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1hA18Ujn5PYj0YiqUeW1EguqV8iypgZ1_&sz=w800" alt="Semgaci 250 ml"></div>
+        <div class="product-info">
+          <h3>Semgaci</h3><p>250 ml</p>
+          <div class="product-row"><span class="price">Rp 10.000</span><span class="stock">Tersedia</span></div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1RNi3ymw7h1Lt57nRBEiswOO-qYVFMVBM&sz=w800" alt="Semgaci 350 ml"></div>
+        <div class="product-info">
+          <h3>Semgaci</h3><p>350 ml</p>
+          <div class="product-row"><span class="price">Rp 14.000</span><span class="stock">Tersedia</span></div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image"><img src="https://drive.google.com/thumbnail?id=11VABERvxjUSuzbYGq8JYtGJ-ytQ74D3K&sz=w800" alt="Semgaci 500 ml"></div>
+        <div class="product-info">
+          <h3>Semgaci</h3><p>500 ml</p>
+          <div class="product-row"><span class="price">Rp 20.000</span><span class="stock">Tersedia</span></div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1txrwzoU5SwK17E7vUK6_f5jofANcKXWA&sz=w800" alt="Wonapel 250 ml"></div>
+        <div class="product-info">
+          <h3>Wonapel</h3><p>250 ml</p>
+          <div class="product-row"><span class="price">Rp 12.000</span><span class="stock">Tersedia</span></div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1IaSHfY14dXUxy4C4QBBgH-UabPeYeJXT&sz=w800" alt="Wonapel 350 ml"></div>
+        <div class="product-info">
+          <h3>Wonapel</h3><p>350 ml</p>
+          <div class="product-row"><span class="price">Rp 15.000</span><span class="stock">Tersedia</span></div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1SBVxmvt3xEGj4voNH8U62yf7ScZfrwbr&sz=w800" alt="Wonapel 500 ml"></div>
+        <div class="product-info">
+          <h3>Wonapel</h3><p>500 ml</p>
+          <div class="product-row"><span class="price">Rp 23.000</span><span class="stock">Tersedia</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="container">
+    <div class="about">
+      <div class="tag">Tentang Kami</div>
+      <div class="section-head" style="margin-bottom:0">
+        <h2>Lebih dari sekadar produk.</h2>
+        <p>Flourich hadir untuk memberikan pilihan produk yang praktis, menarik, dan mudah dinikmati. Kami ingin setiap produk dapat menjadi bagian dari momen sederhana yang menyenangkan.</p>
+      </div>
+      <div class="about-features">
+        <div class="feature">
+          <div class="icon">✓</div>
+          <h3>Pilihan Beragam</h3>
+          <p>Tersedia beberapa pilihan produk dan ukuran.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">Rp</div>
+          <h3>Harga Bersahabat</h3>
+          <p>Harga disiapkan agar mudah dijangkau.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">♥</div>
+          <h3>Dibuat untuk Anda</h3>
+          <p>Hadir untuk menemani berbagai aktivitas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontak">
+  <div class="container">
+    <div class="cta">
+      <div class="cta-content">
+        <div>
+          <h2>Sudah menemukan favoritmu?</h2>
+          <p>Pesan produk Flourich sekarang atau hubungi kami untuk mendapatkan informasi produk dan pemesanan.</p>
+        </div>
+        <div class="cta-buttons">
+          <a class="btn btn-white" href="https://wa.me/6285693446075?text=Halo%20Flourich%2C%20saya%20ingin%20memesan%20produk." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-outline-white" href="https://www.instagram.com/flourich.id?igsi=MTl4eDVkNm92em5nZg==" target="_blank" rel="noopener">Instagram ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer">
+    <div class="footer-brand">
+      <img class="logo" src="https://lh3.googleusercontent.com/d/1kbCU9E4sSQTdBylR24DFnRvsX1cAT-vG" alt="Flourich">
+    </div>
+    <div class="footer-copy">© 2026 Flourich. Semua hak dilindungi.</div>
+  </div>
+</footer>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.querySelector('.nav-links');
+
+menuBtn.addEventListener('click',()=>{
+  const open=nav.style.display==='flex';
+  nav.style.display=open?'':'flex';
+  if(!open){
+    nav.style.position='absolute';
+    nav.style.top='72px';
+    nav.style.left='0';
+    nav.style.right='0';
+    nav.style.padding='18px 20px';
+    nav.style.background='#fff';
+    nav.style.borderBottom='1px solid #e3eaf0';
+    nav.style.flexDirection='column';
+    nav.style.gap='18px';
+  }
+});
+
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    if(window.innerWidth<=850) nav.style.display='';
+  });
+});
+
+const sections=document.querySelectorAll('main section');
+const links=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let current='beranda';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-130) current=s.id;
+  });
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+});
+</script>
+</body>
+</html>
