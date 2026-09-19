@@ -53,6 +53,10 @@ button,input,textarea{font:inherit}
   border:1px solid #dce5ec;border-radius:11px;padding:10px 17px;
   font-size:13px;font-weight:850
 }
+.language-select{
+  border:1px solid #dce5ec;border-radius:9px;padding:8px 8px;
+  color:var(--navy);background:#fff;font-size:12px;font-weight:800;cursor:pointer
+}
 .menu{display:none;border:0;background:none;font-size:25px;color:var(--navy)}
 
 /* HERO */
@@ -79,7 +83,7 @@ h1{
   margin-top:18px;font-size:clamp(45px,5.5vw,68px);
   line-height:.99;letter-spacing:-3.5px
 }
-h1 span{color:#079f72}
+h1 .brand-word{color:#079f72}
 .hero p{max-width:570px;color:#68788f;font-size:16px;margin-top:22px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
 .btn{
@@ -157,6 +161,7 @@ section{padding:88px 0}
 .product-info{padding:14px 3px 3px}
 .product-info h3{font-size:16px}
 .product-info p{font-size:11px;color:#7d8a9d}
+.product-description{min-height:53px;margin-top:5px;font-size:10px!important;line-height:1.55;color:#8793a3!important}
 .product-row{display:flex;align-items:center;justify-content:space-between;margin-top:7px}
 .price{color:var(--green);font-size:14px;font-weight:950}
 .stock{padding:4px 8px;border-radius:99px;background:#e3faef;color:#07865f;font-size:9px;font-weight:850}
@@ -287,12 +292,16 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
       <img class="logo" src="https://lh3.googleusercontent.com/d/1kbCU9E4sSQTdBylR24DFnRvsX1cAT-vG" alt="Flourich">
     </a>
     <nav class="nav-links">
-      <a href="#beranda" class="active">Beranda</a>
-      <a href="#produk">Produk</a>
-      <a href="#tentang">Tentang Kami</a>
-      <a href="#kontak">Kontak</a>
+      <a href="#beranda" class="active" data-i18n="navHome">Beranda</a>
+      <a href="#produk" data-i18n="navProducts">Produk</a>
+      <a href="#tentang" data-i18n="navAbout">Tentang Kami</a>
+      <a href="#kontak" data-i18n="navContact">Kontak</a>
     </nav>
-    <a href="#kontak" class="nav-cta">Pesan Sekarang</a>
+    <a href="#kontak" class="nav-cta" data-i18n="orderNow">Pesan Sekarang</a>
+    <select class="language-select" id="languageSelect" aria-label="Language">
+      <option value="id">ID</option>
+      <option value="en">EN</option>
+    </select>
     <button class="menu" id="menuBtn">☰</button>
   </div>
 </header>
@@ -302,29 +311,29 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
 <section class="hero" id="beranda">
   <div class="container hero-grid">
     <div>
-      <div class="badge"><i></i> Produk pilihan Flourich</div>
-      <h1>Nikmati produk <span>Flourich.</span><br>Teman untuk setiap momen.</h1>
-      <p>Temukan pilihan produk Flourich dengan rasa dan ukuran yang sesuai untuk menemani aktivitas Anda. Pilih produk favorit dan pesan dengan mudah.</p>
+      <div class="badge"><i></i> <span data-i18n="heroBadge">Produk pilihan Flourich</span></div>
+      <h1><span data-i18n="heroTitlePrefix">Nikmati produk</span> <span class="brand-word">Flourich.</span><br><span data-i18n="heroTitleSuffix">Teman untuk setiap momen.</span></h1>
+      <p data-i18n="heroDescription">Temukan pilihan produk Flourich dengan rasa dan ukuran yang sesuai untuk menemani aktivitas Anda. Pilih produk favorit dan pesan dengan mudah.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="#produk">Lihat Produk ↓</a>
-        <a class="btn btn-white" href="#kontak">Pesan Sekarang</a>
+        <a class="btn btn-primary" href="#produk" data-i18n="viewProducts">Lihat Produk ↓</a>
+        <a class="btn btn-white" href="#kontak" data-i18n="orderNow">Pesan Sekarang</a>
       </div>
       <div class="hero-notes">
-        <span>✓ Pilihan ukuran</span>
-        <span>✓ Harga terjangkau</span>
-        <span>✓ Mudah dipesan</span>
+        <span data-i18n="noteSizes">✓ Pilihan ukuran</span>
+        <span data-i18n="noteAffordable">✓ Harga terjangkau</span>
+        <span data-i18n="noteEasyOrder">✓ Mudah dipesan</span>
       </div>
     </div>
 
     <div class="product-showcase">
       <div class="product-blob"></div>
       <div class="floating-card card-one">
-        <small>Mulai dari</small>
+        <small data-i18n="startingFrom">Mulai dari</small>
         <strong>Rp 10.000</strong>
       </div>
       <div class="big-bottle"><img src="https://drive.google.com/thumbnail?id=1hA18Ujn5PYj0YiqUeW1EguqV8iypgZ1_&sz=w800" alt="Semangci 250 ml"></div>
       <div class="floating-card card-two">
-        <small>Produk favorit</small>
+        <small data-i18n="favoriteProduct">Produk favorit</small>
         <strong>Semangci</strong>
       </div>
     </div>
@@ -334,9 +343,9 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
 <section id="produk">
   <div class="container">
     <div class="section-head">
-      <div class="tag">Produk Kami</div>
-      <h2>Pilih produk favoritmu</h2>
-      <p>Berbagai pilihan produk Flourich yang bisa Anda pilih sesuai kebutuhan.</p>
+      <div class="tag" data-i18n="productsTag">Produk Kami</div>
+      <h2 data-i18n="productsTitle">Pilih produk favoritmu</h2>
+      <p data-i18n="productsDescription">Berbagai pilihan produk Flourich yang bisa Anda pilih sesuai kebutuhan.</p>
     </div>
 
     <div class="products">
@@ -344,7 +353,8 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
         <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1hA18Ujn5PYj0YiqUeW1EguqV8iypgZ1_&sz=w800" alt="Semangci 250 ml"></div>
         <div class="product-info">
           <h3>Semangci</h3><p>250 ml</p>
-          <div class="product-row"><span class="price">Rp 10.000</span><span class="stock">Tersedia</span></div>
+          <p class="product-description" data-i18n="semangciDescription">Perpaduan unik kesegaran buah semangka dan manisnya buah leci asli yang menghadirkan sensasi pelepas dahaga paling menyegarkan.</p>
+          <div class="product-row"><span class="price">Rp 10.000</span><span class="stock" data-i18n="available">Tersedia</span></div>
         </div>
       </article>
 
@@ -352,7 +362,8 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
         <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1RNi3ymw7h1Lt57nRBEiswOO-qYVFMVBM&sz=w800" alt="Semangci 350 ml"></div>
         <div class="product-info">
           <h3>Semangci</h3><p>350 ml</p>
-          <div class="product-row"><span class="price">Rp 14.000</span><span class="stock">Tersedia</span></div>
+          <p class="product-description" data-i18n="semangciDescription">Perpaduan unik kesegaran buah semangka dan manisnya buah leci asli yang menghadirkan sensasi pelepas dahaga paling menyegarkan.</p>
+          <div class="product-row"><span class="price">Rp 14.000</span><span class="stock" data-i18n="available">Tersedia</span></div>
         </div>
       </article>
 
@@ -360,7 +371,8 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
         <div class="product-image"><img src="https://drive.google.com/thumbnail?id=11VABERvxjUSuzbYGq8JYtGJ-ytQ74D3K&sz=w800" alt="Semangci 500 ml"></div>
         <div class="product-info">
           <h3>Semangci</h3><p>500 ml</p>
-          <div class="product-row"><span class="price">Rp 20.000</span><span class="stock">Tersedia</span></div>
+          <p class="product-description" data-i18n="semangciDescription">Perpaduan unik kesegaran buah semangka dan manisnya buah leci asli yang menghadirkan sensasi pelepas dahaga paling menyegarkan.</p>
+          <div class="product-row"><span class="price">Rp 20.000</span><span class="stock" data-i18n="available">Tersedia</span></div>
         </div>
       </article>
 
@@ -368,7 +380,8 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
         <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1txrwzoU5SwK17E7vUK6_f5jofANcKXWA&sz=w800" alt="Wonapel 250 ml"></div>
         <div class="product-info">
           <h3>Wonapel</h3><p>250 ml</p>
-          <div class="product-row"><span class="price">Rp 12.000</span><span class="stock">Tersedia</span></div>
+          <p class="product-description" data-i18n="wonapelDescription">Kombinasi sehat dan lezat dari kebaikan wortel, kesegaran nanas, serta manisnya apel pilihan penuh nutrisi.</p>
+          <div class="product-row"><span class="price">Rp 12.000</span><span class="stock" data-i18n="available">Tersedia</span></div>
         </div>
       </article>
 
@@ -376,7 +389,8 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
         <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1IaSHfY14dXUxy4C4QBBgH-UabPeYeJXT&sz=w800" alt="Wonapel 350 ml"></div>
         <div class="product-info">
           <h3>Wonapel</h3><p>350 ml</p>
-          <div class="product-row"><span class="price">Rp 15.000</span><span class="stock">Tersedia</span></div>
+          <p class="product-description" data-i18n="wonapelDescription">Kombinasi sehat dan lezat dari kebaikan wortel, kesegaran nanas, serta manisnya apel pilihan penuh nutrisi.</p>
+          <div class="product-row"><span class="price">Rp 15.000</span><span class="stock" data-i18n="available">Tersedia</span></div>
         </div>
       </article>
 
@@ -384,7 +398,8 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
         <div class="product-image"><img src="https://drive.google.com/thumbnail?id=1SBVxmvt3xEGj4voNH8U62yf7ScZfrwbr&sz=w800" alt="Wonapel 500 ml"></div>
         <div class="product-info">
           <h3>Wonapel</h3><p>500 ml</p>
-          <div class="product-row"><span class="price">Rp 23.000</span><span class="stock">Tersedia</span></div>
+          <p class="product-description" data-i18n="wonapelDescription">Kombinasi sehat dan lezat dari kebaikan wortel, kesegaran nanas, serta manisnya apel pilihan penuh nutrisi.</p>
+          <div class="product-row"><span class="price">Rp 23.000</span><span class="stock" data-i18n="available">Tersedia</span></div>
         </div>
       </article>
     </div>
@@ -394,26 +409,26 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
 <section id="tentang">
   <div class="container">
     <div class="about">
-      <div class="tag">Tentang Kami</div>
+      <div class="tag" data-i18n="aboutTag">Tentang Kami</div>
       <div class="section-head" style="margin-bottom:0">
-        <h2>Lebih dari sekadar produk.</h2>
-        <p>Flourich hadir untuk memberikan pilihan produk yang praktis, menarik, dan mudah dinikmati. Kami ingin setiap produk dapat menjadi bagian dari momen sederhana yang menyenangkan.</p>
+        <h2 data-i18n="aboutTitle">Lebih dari sekadar produk.</h2>
+        <p data-i18n="aboutDescription">Flourich hadir untuk memberikan pilihan produk yang praktis, menarik, dan mudah dinikmati. Kami ingin setiap produk dapat menjadi bagian dari momen sederhana yang menyenangkan.</p>
       </div>
       <div class="about-features">
         <div class="feature">
           <div class="icon">✓</div>
-          <h3>Pilihan Beragam</h3>
-          <p>Tersedia beberapa pilihan produk dan ukuran.</p>
+          <h3 data-i18n="featureVarietyTitle">Pilihan Beragam</h3>
+          <p data-i18n="featureVarietyDescription">Tersedia beberapa pilihan produk dan ukuran.</p>
         </div>
         <div class="feature">
           <div class="icon">Rp</div>
-          <h3>Harga Bersahabat</h3>
-          <p>Harga disiapkan agar mudah dijangkau.</p>
+          <h3 data-i18n="featurePriceTitle">Harga Bersahabat</h3>
+          <p data-i18n="featurePriceDescription">Harga disiapkan agar mudah dijangkau.</p>
         </div>
         <div class="feature">
           <div class="icon">♥</div>
-          <h3>Dibuat untuk Anda</h3>
-          <p>Hadir untuk menemani berbagai aktivitas.</p>
+          <h3 data-i18n="featureMadeTitle">Dibuat untuk Anda</h3>
+          <p data-i18n="featureMadeDescription">Hadir untuk menemani berbagai aktivitas.</p>
         </div>
       </div>
     </div>
@@ -425,8 +440,8 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
     <div class="cta">
       <div class="cta-content">
         <div>
-          <h2>Sudah menemukan favoritmu?</h2>
-          <p>Pesan produk Flourich sekarang atau hubungi kami untuk mendapatkan informasi produk dan pemesanan.</p>
+          <h2 data-i18n="ctaTitle">Sudah menemukan favoritmu?</h2>
+          <p data-i18n="ctaDescription">Pesan produk Flourich sekarang atau hubungi kami untuk mendapatkan informasi produk dan pemesanan.</p>
         </div>
         <div class="cta-buttons">
           <a class="btn btn-white" href="https://wa.me/6285693446075?text=Halo%20Flourich%2C%20saya%20ingin%20memesan%20produk." target="_blank" rel="noopener">WhatsApp</a>
@@ -444,13 +459,66 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
     <div class="footer-brand">
       <img class="logo" src="https://lh3.googleusercontent.com/d/1kbCU9E4sSQTdBylR24DFnRvsX1cAT-vG" alt="Flourich">
     </div>
-    <div class="footer-copy">© 2026 Flourich. Semua hak dilindungi.</div>
+    <div class="footer-copy" data-i18n="footerCopyright">© 2026 Flourich. Semua hak dilindungi.</div>
   </div>
 </footer>
 
 <script>
+const translations={
+  id:{
+    navHome:'Beranda',navProducts:'Produk',navAbout:'Tentang Kami',navContact:'Kontak',orderNow:'Pesan Sekarang',
+    heroBadge:'Produk pilihan Flourich',heroTitlePrefix:'Nikmati produk',heroTitleSuffix:'Teman untuk setiap momen.',
+    heroDescription:'Temukan pilihan produk Flourich dengan rasa dan ukuran yang sesuai untuk menemani aktivitas Anda. Pilih produk favorit dan pesan dengan mudah.',
+    viewProducts:'Lihat Produk ↓',noteSizes:'✓ Pilihan ukuran',noteAffordable:'✓ Harga terjangkau',noteEasyOrder:'✓ Mudah dipesan',
+    startingFrom:'Mulai dari',favoriteProduct:'Produk favorit',productsTag:'Produk Kami',productsTitle:'Pilih produk favoritmu',
+    productsDescription:'Berbagai pilihan produk Flourich yang bisa Anda pilih sesuai kebutuhan.',available:'Tersedia',
+    semangciDescription:'Perpaduan unik kesegaran buah semangka dan manisnya buah leci asli yang menghadirkan sensasi pelepas dahaga paling menyegarkan.',
+    wonapelDescription:'Kombinasi sehat dan lezat dari kebaikan wortel, kesegaran nanas, serta manisnya apel pilihan penuh nutrisi.',
+    aboutTag:'Tentang Kami',aboutTitle:'Lebih dari sekadar produk.',
+    aboutDescription:'Flourich hadir untuk memberikan pilihan produk yang praktis, menarik, dan mudah dinikmati. Kami ingin setiap produk dapat menjadi bagian dari momen sederhana yang menyenangkan.',
+    featureVarietyTitle:'Pilihan Beragam',featureVarietyDescription:'Tersedia beberapa pilihan produk dan ukuran.',
+    featurePriceTitle:'Harga Bersahabat',featurePriceDescription:'Harga disiapkan agar mudah dijangkau.',
+    featureMadeTitle:'Dibuat untuk Anda',featureMadeDescription:'Hadir untuk menemani berbagai aktivitas.',
+    ctaTitle:'Sudah menemukan favoritmu?',ctaDescription:'Pesan produk Flourich sekarang atau hubungi kami untuk mendapatkan informasi produk dan pemesanan.',
+    footerCopyright:'© 2026 Flourich. Semua hak dilindungi.'
+  },
+  en:{
+    navHome:'Home',navProducts:'Products',navAbout:'About Us',navContact:'Contact',orderNow:'Order Now',
+    heroBadge:'Flourich selected products',heroTitlePrefix:'Enjoy',heroTitleSuffix:'A companion for every moment.',
+    heroDescription:'Discover Flourich products in flavors and sizes made to fit your activities. Choose your favorite and order with ease.',
+    viewProducts:'View Products ↓',noteSizes:'✓ Multiple sizes',noteAffordable:'✓ Affordable prices',noteEasyOrder:'✓ Easy to order',
+    startingFrom:'Starting from',favoriteProduct:'Favorite product',productsTag:'Our Products',productsTitle:'Choose your favorite product',
+    productsDescription:'A variety of Flourich products to suit your needs.',available:'Available',
+    semangciDescription:'A refreshing blend of juicy watermelon and sweet real lychee for the ultimate thirst-quenching experience.',
+    wonapelDescription:'A healthy, delicious combination of nourishing carrot, refreshing pineapple, and sweet select apples.',
+    aboutTag:'About Us',aboutTitle:'More than just a product.',
+    aboutDescription:'Flourich brings you practical, appealing products that are easy to enjoy. We want every product to be part of life\'s simple, delightful moments.',
+    featureVarietyTitle:'Plenty of Choice',featureVarietyDescription:'Several products and sizes are available.',
+    featurePriceTitle:'Friendly Prices',featurePriceDescription:'Prices made to stay within reach.',
+    featureMadeTitle:'Made for You',featureMadeDescription:'Here to accompany your everyday activities.',
+    ctaTitle:'Found your favorite?',ctaDescription:'Order Flourich products now or contact us for product and ordering information.',
+    footerCopyright:'© 2026 Flourich. All rights reserved.'
+  }
+};
+
+function changeLanguage(language){
+  const selectedLanguage=translations[language]?language:'id';
+  document.documentElement.lang=selectedLanguage;
+  document.querySelectorAll('[data-i18n]').forEach(element=>{
+    const translation=translations[selectedLanguage][element.dataset.i18n];
+    if(translation) element.textContent=translation;
+  });
+  document.title=selectedLanguage==='en'?'Flourich - Selected Products for Every Moment':'Flourich — Produk Pilihan untuk Setiap Momen';
+  localStorage.setItem('flourichLanguage',selectedLanguage);
+  languageSelect.value=selectedLanguage;
+}
+
 const menuBtn=document.getElementById('menuBtn');
 const nav=document.querySelector('.nav-links');
+const languageSelect=document.getElementById('languageSelect');
+
+languageSelect.addEventListener('change',event=>changeLanguage(event.target.value));
+changeLanguage(localStorage.getItem('flourichLanguage')||'id');
 
 menuBtn.addEventListener('click',()=>{
   const open=nav.style.display==='flex';
