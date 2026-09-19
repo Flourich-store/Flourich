@@ -502,20 +502,20 @@ const translations={
   },
   en:{
     navHome:'Home',navProducts:'Products',navAbout:'About Us',navContact:'Contact',orderNow:'Order Now',
-    heroBadge:'Flourich selected products',heroTitlePrefix:'Enjoy',heroTitleSuffix:'A companion for every moment.',
-    heroDescription:'Discover Flourich products in flavors and sizes made to fit your activities. Choose your favorite and order with ease.',
-    viewProducts:'View Products ↓',noteSizes:'✓ Multiple sizes',noteAffordable:'✓ Affordable prices',noteEasyOrder:'✓ Easy to order',
-    startingFrom:'Starting from',favoriteProduct:'Favorite product',productsTag:'Our Products',productsTitle:'Choose your favorite product',
-    productsDescription:'A variety of Flourich products to suit your needs.',available:'Available',
-    semangciDescription:'A refreshing blend of juicy watermelon and sweet real lychee for the ultimate thirst-quenching experience.',
-    wonapelDescription:'A healthy, delicious combination of nourishing carrot, refreshing pineapple, and sweet select apples.',
-    aboutTag:'About Us',aboutTitle:'More than just a product.',
-    aboutDescription:'Flourich brings you practical, appealing products that are easy to enjoy. We want every product to be part of life\'s simple, delightful moments.',
-    featureVarietyTitle:'Plenty of Choice',featureVarietyDescription:'Several products and sizes are available.',
-    featurePriceTitle:'Friendly Prices',featurePriceDescription:'Prices made to stay within reach.',
-    featureMadeTitle:'Made for You',featureMadeDescription:'Here to accompany your everyday activities.',
-    ctaTitle:'Found your favorite?',ctaDescription:'Order Flourich products now or contact us for product and ordering information.',
-    footerCopyright:'© 2026 Flourich. All rights reserved.'
+    heroBadge:'Flourich favorites',heroTitlePrefix:'Enjoy',heroTitleSuffix:'Made for every moment.',
+    heroDescription:'Find your go-to Flourich drink in a flavor and size that fits your day. Pick your favorite and order in just a few clicks.',
+    viewProducts:'See Products ↓',noteSizes:'✓ Sizes to choose from',noteAffordable:'✓ Good prices',noteEasyOrder:'✓ Easy to order',
+    startingFrom:'From',favoriteProduct:'Fan favorite',productsTag:'Our Products',productsTitle:'Pick your favorite',
+    productsDescription:'Find a Flourich favorite for every kind of craving.',available:'In stock',
+    semangciDescription:'A juicy mix of watermelon and sweet lychee that makes every sip extra refreshing.',
+    wonapelDescription:'A tasty, feel-good mix of carrot, refreshing pineapple, and sweet apples packed with goodness.',
+    aboutTag:'About Us',aboutTitle:'More than just a drink.',
+    aboutDescription:'Flourich makes drinks that are easy to enjoy, wherever your day takes you. We hope every bottle adds a little something nice to your everyday moments.',
+    featureVarietyTitle:'Plenty to Choose From',featureVarietyDescription:'Pick from different flavors and sizes.',
+    featurePriceTitle:'Easy on the Wallet',featurePriceDescription:'Good drinks at prices that feel right.',
+    featureMadeTitle:'Made for Your Day',featureMadeDescription:'A tasty companion for whatever you are up to.',
+    ctaTitle:'Found your favorite?',ctaDescription:'Order your Flourich favorites or get in touch if you have any questions.',
+    footerCopyright:'© 2026 Flourich. Made for good moments.'
   }
 };
 
@@ -526,7 +526,7 @@ function changeLanguage(language){
     const translation=translations[selectedLanguage][element.dataset.i18n];
     if(translation) element.textContent=translation;
   });
-  document.title=selectedLanguage==='en'?'Flourich - Selected Products for Every Moment':'Flourich — Produk Pilihan untuk Setiap Momen';
+  document.title=selectedLanguage==='en'?'Flourich - Great Picks for Every Moment':'Flourich — Produk Pilihan untuk Setiap Momen';
   localStorage.setItem('flourichLanguage',selectedLanguage);
   updateLanguageSwitcher(selectedLanguage);
 }
