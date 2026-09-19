@@ -53,10 +53,25 @@ button,input,textarea{font:inherit}
   border:1px solid #dce5ec;border-radius:11px;padding:10px 17px;
   font-size:13px;font-weight:850
 }
-.language-select{
-  border:1px solid #dce5ec;border-radius:9px;padding:8px 8px;
-  color:var(--navy);background:#fff;font-size:12px;font-weight:800;cursor:pointer
+.language-switcher{position:relative}
+.language-toggle{
+  display:inline-flex;align-items:center;gap:6px;border:1px solid #dce5ec;
+  border-radius:9px;padding:8px 10px;color:var(--navy);background:#fff;
+  font-size:12px;font-weight:800;cursor:pointer
 }
+.language-toggle img,.language-option img{width:20px;height:15px;object-fit:cover;display:block}
+.language-menu{
+  display:none;position:absolute;right:0;top:calc(100% + 7px);min-width:108px;
+  padding:5px;background:#fff;border:1px solid var(--line);border-radius:9px;
+  box-shadow:var(--shadow);z-index:110
+}
+.language-switcher.open .language-menu{display:grid;gap:2px}
+.language-option{
+  display:flex;align-items:center;gap:6px;width:100%;padding:7px 8px;
+  border:0;border-radius:6px;background:#fff;color:var(--navy);
+  font-size:12px;font-weight:800;text-align:left;cursor:pointer
+}
+.language-option:hover,.language-option.active{background:var(--green-light);color:var(--green)}
 .menu{display:none;border:0;background:none;font-size:25px;color:var(--navy)}
 
 /* HERO */
@@ -298,11 +313,14 @@ footer{background:#0c172c;color:#fff;padding:32px 0}
       <a href="#kontak" data-i18n="navContact">Kontak</a>
     </nav>
     <a href="#kontak" class="nav-cta" data-i18n="orderNow">Pesan Sekarang</a>
-    <select class="language-select" id="languageSelect" aria-label="Language">
-      <option value="id">ID</option>
-      <option value="en">EN</option>
-    </select>
-    <button class="menu" id="menuBtn">☰</button>
+    <div class="language-switcher" id="languageSwitcher">
+      <button class="language-toggle" id="languageToggle" type="button" aria-label="Language" aria-expanded="false"></button>
+      <div class="language-menu" id="languageMenu" role="menu">
+        <button class="language-option" type="button" data-language="id" role="menuitem"><img src="https://flagcdn.com/24x18/id.png" alt="ID"> ID</button>
+        <button class="language-option" type="button" data-language="en" role="menuitem"><img src="https://flagcdn.com/24x18/gb.png" alt="EN"> EN</button>
+      </div>
+    </div>
+    <button class="menu" id="menuBtn" type="button" aria-label="Menu">☰</button>
   </div>
 </header>
 
@@ -510,14 +528,42 @@ function changeLanguage(language){
   });
   document.title=selectedLanguage==='en'?'Flourich - Selected Products for Every Moment':'Flourich — Produk Pilihan untuk Setiap Momen';
   localStorage.setItem('flourichLanguage',selectedLanguage);
-  languageSelect.value=selectedLanguage;
+  updateLanguageSwitcher(selectedLanguage);
 }
 
 const menuBtn=document.getElementById('menuBtn');
 const nav=document.querySelector('.nav-links');
-const languageSelect=document.getElementById('languageSelect');
+const languageSwitcher=document.getElementById('languageSwitcher');
+const languageToggle=document.getElementById('languageToggle');
+const languageOptions=document.querySelectorAll('.language-option');
 
-languageSelect.addEventListener('change',event=>changeLanguage(event.target.value));
+function updateLanguageSwitcher(language){
+  const flag=language==='en'?'gb':'id';
+  const label=language==='en'?'EN':'ID';
+  languageToggle.innerHTML=`<img src="https://flagcdn.com/24x18/${flag}.png" alt="${label}"> ${label}`;
+  languageOptions.forEach(option=>option.classList.toggle('active',option.dataset.language===language));
+}
+
+languageToggle.addEventListener('click',()=>{
+  const open=languageSwitcher.classList.toggle('open');
+  languageToggle.setAttribute('aria-expanded',open);
+});
+
+languageOptions.forEach(option=>{
+  option.addEventListener('click',()=>{
+    changeLanguage(option.dataset.language);
+    languageSwitcher.classList.remove('open');
+    languageToggle.setAttribute('aria-expanded','false');
+  });
+});
+
+document.addEventListener('click',event=>{
+  if(!languageSwitcher.contains(event.target)){
+    languageSwitcher.classList.remove('open');
+    languageToggle.setAttribute('aria-expanded','false');
+  }
+});
+
 changeLanguage(localStorage.getItem('flourichLanguage')||'id');
 
 menuBtn.addEventListener('click',()=>{
